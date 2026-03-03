@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <h1>AI Plagiarism Detector Workspace</h1>
+  <p>Upload PDF, image, or paste text. Get line-by-line analysis, highlighted risks, and downloadable reports.</p>
+  {% if logged_in %}
+    <a class="btn" href="{{ url_for('dashboard') }}">Open Dashboard</a>
+  {% else %}
+    <div class="cta-row">
+      <a class="btn" href="{{ url_for('register') }}">Create Account</a>
+      <a class="btn ghost" href="{{ url_for('login') }}">Login</a>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

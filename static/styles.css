@@ -1,0 +1,37 @@
+:root {
+  --bg:#0b1020;
+  --panel:#151c34;
+  --muted:#9fb2d6;
+  --text:#eff4ff;
+  --accent:#6ee7ff;
+  --accent2:#a78bfa;
+  --danger:#ff7b8a;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui;background:radial-gradient(circle at top right,#1f2a54,var(--bg));color:var(--text)}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 30px;border-bottom:1px solid #2f3a66;background:#0f1730cc;backdrop-filter: blur(8px);position:sticky;top:0}
+.logo{font-weight:800;color:var(--accent);text-decoration:none;font-size:1.3rem}
+nav a{margin-left:16px;color:var(--text);text-decoration:none}
+.container{max-width:1100px;margin:28px auto;padding:0 20px}
+.hero,.panel{background:linear-gradient(135deg,#11193b,#172447);border:1px solid #31427a;border-radius:16px;padding:24px;box-shadow:0 10px 30px #0000003b}
+.hero h1{margin-top:0}
+.btn{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent2));padding:10px 16px;border-radius:10px;border:none;color:#111;font-weight:700;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid #5064a5}
+.cta-row{display:flex;gap:12px}
+label{display:block;margin:10px 0 6px;color:var(--muted)}
+input,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #3f4f84;background:#0f1630;color:var(--text)}
+.layout{display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start}
+.side-panel{position:sticky;top:90px}
+.history-list{padding-left:18px}
+.history-list li{margin-bottom:10px}
+.history-list a{color:#b8ccff}
+.small{max-width:460px;margin:0 auto}
+.flash{padding:10px;border-radius:8px;margin-bottom:16px}
+.flash.success{background:#1f6f4f}
+.flash.danger{background:#7d2a38}
+.flash.warning{background:#8a6a1f}
+.line-report li{margin-bottom:16px}
+.chip{background:#2d3c6d;padding:4px 8px;border-radius:999px;font-size:12px;margin-right:6px}
+.chip.score{background:#1d7f76}
+mark{background:#ffd84d;color:#151515;padding:0 2px;border-radius:4px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}.side-panel{position:static}}

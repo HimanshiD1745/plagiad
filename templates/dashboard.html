@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your Analyzer</h2>
+<div class="layout">
+  <section class="panel upload-panel">
+    <h3>Upload Area</h3>
+    <form method="post" action="{{ url_for('analyze') }}" enctype="multipart/form-data">
+      <label>Paste text</label>
+      <textarea name="text_input" rows="8" placeholder="Paste text for AI plagiarism detection"></textarea>
+      <label>Upload file (pdf/image)</label>
+      <input type="file" name="file_input" accept=".pdf,.png,.jpg,.jpeg,.webp" />
+      <button class="btn" type="submit">Analyze</button>
+    </form>
+  </section>
+
+  <section class="panel side-panel">
+    <h3>Recent History</h3>
+    {% if history %}
+      <ul class="history-list">
+        {% for item in history[:8] %}
+          <li>
+            <a href="{{ url_for('report', analysis_id=item.id) }}">{{ item.source_name }}</a>
+            <small>{{ item.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No history yet.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
