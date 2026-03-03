@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Analysis Report: {{ entry.source_name }}</h2>
+<div class="layout">
+  <section class="panel side-panel">
+    <h3>Line-by-Line Analysis</h3>
+    <ol class="line-report">
+      {% for item in line_results %}
+      <li>
+        <p>{{ item.rendered_line|safe }}</p>
+        <span class="chip">{{ item.label }}</span>
+        <span class="chip score">{{ item.score }}%</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  <section class="panel upload-panel">
+    <h3>Overall Analysis</h3>
+    <p><strong>Overall AI probability:</strong> {{ overall.overall_ai_probability }}%</p>
+    <p><strong>Dominant pattern:</strong> {{ overall.dominant_type }}</p>
+    <p><strong>Flagged lines:</strong> {{ overall.flagged_lines }} / {{ overall.total_lines }}</p>
+    {% if overall.detected_image_ai_model %}
+      <p><strong>Likely AI image model:</strong> {{ overall.detected_image_ai_model }}</p>
+    {% endif %}
+    <a class="btn" href="{{ url_for('download_report', analysis_id=entry.id) }}">Download Report</a>
+  </section>
+</div>
+{% endblock %}
